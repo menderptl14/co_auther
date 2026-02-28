@@ -18,17 +18,16 @@ load_dotenv()
 app = Flask(__name__)
 
 # ─── Configuration ────────────────────────────────────────────────────────────
-# GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyA8VxxhW9tEcZWJQzpDIbtliLLcMTvkB6A")
-# GEMINI_API_KEY="AIzaSyA8VxxhW9tEcZWJQzpDIbtliLLcMTvkB6A"
+
 load_dotenv()
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-print("API KEY:", GEMINI_API_KEY)
+# print("API KEY:", GEMINI_API_KEY)
 DB_PATH = os.path.join(os.path.dirname(__file__), "data", "metrics.db")
 
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel("gemini-3-flash-preview")
+    model = genai.GenerativeModel("gemini-2.5-flash")
 else:
     model = None
 
